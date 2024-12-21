@@ -8,8 +8,6 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-
-
 mongoose.connect('mongodb+srv://alagbeolalekan1000:alagbeolalekan11@cluster0.glzvad7.mongodb.net/it_health_monitor');
 
 // User Schema
@@ -22,6 +20,30 @@ const userSchema = new mongoose.Schema({
 });
 
 const User = mongoose.model('User', userSchema);
+
+// Server Memory Usage Schema
+const serverMemoryUsageSchema = new mongoose.Schema({
+  timestamp: { type: String, required: true },
+  server: { type: String, required: true },
+  total_memory: { type: Number, required: true },
+  used_memory: { type: Number, required: true },
+  free_memory: { type: Number, required: true },
+  memory_usage_percent: { type: Number, required: true }
+});
+
+const ServerMemoryUsage = mongoose.model('ServerMemoryUsage', serverMemoryUsageSchema);
+
+// Define the schema for your server health data
+const serverHealthSchema = new mongoose.Schema({
+  timestamp: String,
+  serverName: String,
+  cpuUsage: Number,
+  diskUsage: Number,
+  memoryUsage: Number,
+});
+
+// Create the model
+const ServerHealth = mongoose.model('ServerHealth', serverHealthSchema);
 
 // Create default admin user
 async function createDefaultAdmin() {
@@ -92,7 +114,27 @@ app.post('/api/users', auth, async (req, res) => {
   }
 });
 
+// Get all server memory usage data
+app.get('/api/server-memory-usage', async (req, res) => {
+  try {
+    const data = await ServerMemoryUsage.find();
+    res.status(200).send(data);
+  } catch (error) {
+    res.status(500).send({ error: 'Failed to fetch server memory usage data' });
+  }
+});
 
+// Define an endpoint to retrieve data
+app.get('/api/server-health', async (req, res) => {
+  try {
+    // Fetch data from the database
+    const data = await ServerHealth.find();
+    res.status(200).json(data);
+  } catch (error) {
+    console.error('Error fetching server health data:', error);
+    res.status(500).json({ message: 'Failed to fetch data' });
+  }
+});
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {

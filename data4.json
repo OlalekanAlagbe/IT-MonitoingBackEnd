@@ -1,0 +1,47 @@
+const data = [
+    
+  {
+    "timestamp": "2024-06-17 10:30:00",
+    "serverName": "Server-1",
+    "cpuUsage": 53,
+    "diskUsage": 63,
+    "memoryUsage": 73
+  },
+  {
+    "timestamp": "2024-06-17 10:35:00",
+    "serverName": "Server-1",
+    "cpuUsage": 58,
+    "diskUsage": 67,
+    "memoryUsage": 76
+  },
+  {
+    "timestamp": "2024-06-17 10:40:00",
+    "serverName": "Server-1",
+    "cpuUsage": 63,
+    "diskUsage": 71,
+    "memoryUsage": 79
+  },
+  {
+    
+    "timestamp": "2024-06-17 10:45:00",
+    "serverName": "Server-1",
+    "cpuUsage": 68,
+    "diskUsage": 75,
+    "memoryUsage": 73
+   },
+   {
+    "timestamp": "2024-06-17 10:50:00",
+    "serverName": "Server-1",
+    "cpuUsage": 73,
+    "diskUsage": 63,
+    "memoryUsage": 76
+    },
+    {
+    "timestamp": "2024-06-17 10:55:00",
+        "serverName": "Server-1",
+        "cpuUsage": 53,
+        "diskUsage": 67,
+        "memoryUsage": 79
+        }
+
+]
