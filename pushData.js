@@ -14,7 +14,7 @@ async function saveDataToMongoDB(data) {
 
         // Access the database and collection
         const database = client.db("it_health_monitor");
-        const collection = database.collection("serverhealths");
+        const collection = database.collection("servedataresponsetimeuptimes");
 
         // Insert the data into the collection
         const result = await collection.insertMany(data);
@@ -30,706 +30,366 @@ async function saveDataToMongoDB(data) {
 
 // Example usage
 const data = [
-    {
-      "timestamp": "2024-06-17 10:30:00",
-      "serverName": "Server-1",
-      "cpuUsage": 53,
-      "diskUsage": 63,
-      "memoryUsage": 73
-    },
-    {
-      "timestamp": "2024-06-17 10:30:00",
-      "serverName": "Server-2",
-      "cpuUsage": 57,
-      "diskUsage": 67,
-      "memoryUsage": 77
-    },
-    {
-      "timestamp": "2024-06-17 10:30:00",
-      "serverName": "Server-3",
-      "cpuUsage": 55,
-      "diskUsage": 65,
-      "memoryUsage": 75
-    },
-    {
-      "timestamp": "2024-06-17 10:30:00",
-      "serverName": "Server-4",
-      "cpuUsage": 54,
-      "diskUsage": 64,
-      "memoryUsage": 74
-    },
-    {
-      "timestamp": "2024-06-17 10:30:00",
-      "serverName": "Server-5",
-      "cpuUsage": 52,
-      "diskUsage": 62,
-      "memoryUsage": 72
-    },
-    {
-      "timestamp": "2024-06-17 10:35:00",
-      "serverName": "Server-1",
-      "cpuUsage": 58,
-      "diskUsage": 67,
-      "memoryUsage": 76
-    },
-    {
-      "timestamp": "2024-06-17 10:35:00",
-      "serverName": "Server-2",
-      "cpuUsage": 62,
-      "diskUsage": 71,
-      "memoryUsage": 80
-    },
-    {
-      "timestamp": "2024-06-17 10:35:00",
-      "serverName": "Server-3",
-      "cpuUsage": 60,
-      "diskUsage": 69,
-      "memoryUsage": 78
-    },
-    {
-      "timestamp": "2024-06-17 10:35:00",
-      "serverName": "Server-4",
-      "cpuUsage": 59,
-      "diskUsage": 68,
-      "memoryUsage": 77
-    },
-    {
-      "timestamp": "2024-06-17 10:35:00",
-      "serverName": "Server-5",
-      "cpuUsage": 57,
-      "diskUsage": 66,
-      "memoryUsage": 75
-    },
-    {
-      "timestamp": "2024-06-17 10:40:00",
-      "serverName": "Server-1",
-      "cpuUsage": 63,
-      "diskUsage": 71,
-      "memoryUsage": 79
-    },
-    {
-      "timestamp": "2024-06-17 10:40:00",
-      "serverName": "Server-2",
-      "cpuUsage": 67,
-      "diskUsage": 75,
-      "memoryUsage": 83
-    },
-    {
-      "timestamp": "2024-06-17 10:40:00",
-      "serverName": "Server-3",
-      "cpuUsage": 65,
-      "diskUsage": 73,
-      "memoryUsage": 81
-    },
-    {
-      "timestamp": "2024-06-17 10:40:00",
-      "serverName": "Server-4",
-      "cpuUsage": 64,
-      "diskUsage": 72,
-      "memoryUsage": 80
-    },
-    {
-      "timestamp": "2024-06-17 10:40:00",
-      "serverName": "Server-5",
-      "cpuUsage": 62,
-      "diskUsage": 70,
-      "memoryUsage": 78
-    },
-    {
-      "timestamp": "2024-06-17 10:45:00",
-      "serverName": "Server-1",
-      "cpuUsage": 68,
-      "diskUsage": 75,
-      "memoryUsage": 73
-    },
-    {
-      "timestamp": "2024-06-17 10:45:00",
-      "serverName": "Server-2",
-      "cpuUsage": 72,
-      "diskUsage": 79,
-      "memoryUsage": 77
-    },
-    {
-      "timestamp": "2024-06-17 10:45:00",
-      "serverName": "Server-3",
-      "cpuUsage": 70,
-      "diskUsage": 77,
-      "memoryUsage": 75
-    },
-    {
-      "timestamp": "2024-06-17 10:45:00",
-      "serverName": "Server-4",
-      "cpuUsage": 69,
-      "diskUsage": 76,
-      "memoryUsage": 74
-    },
-    {
-      "timestamp": "2024-06-17 10:45:00",
-      "serverName": "Server-5",
-      "cpuUsage": 67,
-      "diskUsage": 74,
-      "memoryUsage": 72
-    },
-    {
-      "timestamp": "2024-06-17 10:50:00",
-      "serverName": "Server-1",
-      "cpuUsage": 73,
-      "diskUsage": 63,
-      "memoryUsage": 76
-    },
-    {
-      "timestamp": "2024-06-17 10:50:00",
-      "serverName": "Server-2",
-      "cpuUsage": 77,
-      "diskUsage": 67,
-      "memoryUsage": 80
-    },
-    {
-      "timestamp": "2024-06-17 10:50:00",
-      "serverName": "Server-3",
-      "cpuUsage": 75,
-      "diskUsage": 65,
-      "memoryUsage": 78
-    },
-    {
-      "timestamp": "2024-06-17 10:50:00",
-      "serverName": "Server-4",
-      "cpuUsage": 74,
-      "diskUsage": 64,
-      "memoryUsage": 77
-    },
-    {
-      "timestamp": "2024-06-17 10:50:00",
-      "serverName": "Server-5",
-      "cpuUsage": 72,
-      "diskUsage": 62,
-      "memoryUsage": 75
-    },
-    {
-      "timestamp": "2024-06-17 10:55:00",
-      "serverName": "Server-1",
-      "cpuUsage": 53,
-      "diskUsage": 67,
-      "memoryUsage": 79
-    },
-    {
-      "timestamp": "2024-06-17 10:55:00",
-      "serverName": "Server-2",
-      "cpuUsage": 57,
-      "diskUsage": 71,
-      "memoryUsage": 83
-    },
-    {
-      "timestamp": "2024-06-17 10:55:00",
-      "serverName": "Server-3",
-      "cpuUsage": 55,
-      "diskUsage": 69,
-      "memoryUsage": 81
-    },
-    {
-      "timestamp": "2024-06-17 10:55:00",
-      "serverName": "Server-4",
-      "cpuUsage": 54,
-      "diskUsage": 68,
-      "memoryUsage": 80
-    },
-    {
-      "timestamp": "2024-06-17 10:55:00",
-      "serverName": "Server-5",
-      "cpuUsage": 52,
-      "diskUsage": 66,
-      "memoryUsage": 78
-    },
-    {
-      "timestamp": "2024-06-17 11:00:00",
-      "serverName": "Server-1",
-      "cpuUsage": 58,
-      "diskUsage": 71,
-      "memoryUsage": 73
-    },
-    {
-      "timestamp": "2024-06-17 11:00:00",
-      "serverName": "Server-2",
-      "cpuUsage": 62,
-      "diskUsage": 75,
-      "memoryUsage": 77
-    },
-    {
-      "timestamp": "2024-06-17 11:00:00",
-      "serverName": "Server-3",
-      "cpuUsage": 60,
-      "diskUsage": 73,
-      "memoryUsage": 75
-    },
-    {
-      "timestamp": "2024-06-17 11:00:00",
-      "serverName": "Server-4",
-      "cpuUsage": 59,
-      "diskUsage": 72,
-      "memoryUsage": 74
-    },
-    {
-      "timestamp": "2024-06-17 11:00:00",
-      "serverName": "Server-5",
-      "cpuUsage": 57,
-      "diskUsage": 70,
-      "memoryUsage": 72
-    },
-    {
-      "timestamp": "2024-06-17 11:05:00",
-      "serverName": "Server-1",
-      "cpuUsage": 63,
-      "diskUsage": 75,
-      "memoryUsage": 76
-    },
-    {
-      "timestamp": "2024-06-17 11:05:00",
-      "serverName": "Server-2",
-      "cpuUsage": 67,
-      "diskUsage": 79,
-      "memoryUsage": 80
-    },
-    {
-      "timestamp": "2024-06-17 11:05:00",
-      "serverName": "Server-3",
-      "cpuUsage": 65,
-      "diskUsage": 77,
-      "memoryUsage": 78
-    },
-    {
-      "timestamp": "2024-06-17 11:05:00",
-      "serverName": "Server-4",
-      "cpuUsage": 64,
-      "diskUsage": 76,
-      "memoryUsage": 77
-    },
-    {
-      "timestamp": "2024-06-17 11:05:00",
-      "serverName": "Server-5",
-      "cpuUsage": 62,
-      "diskUsage": 74,
-      "memoryUsage": 75
-    },
-    {
-      "timestamp": "2024-06-17 11:10:00",
-      "serverName": "Server-1",
-      "cpuUsage": 68,
-      "diskUsage": 63,
-      "memoryUsage": 79
-    },
-    {
-      "timestamp": "2024-06-17 11:10:00",
-      "serverName": "Server-2",
-      "cpuUsage": 72,
-      "diskUsage": 67,
-      "memoryUsage": 83
-    },
-    {
-      "timestamp": "2024-06-17 11:10:00",
-      "serverName": "Server-3",
-      "cpuUsage": 70,
-      "diskUsage": 65,
-      "memoryUsage": 81
-    },
-    {
-      "timestamp": "2024-06-17 11:10:00",
-      "serverName": "Server-4",
-      "cpuUsage": 69,
-      "diskUsage": 64,
-      "memoryUsage": 80
-    },
-    {
-      "timestamp": "2024-06-17 11:10:00",
-      "serverName": "Server-5",
-      "cpuUsage": 67,
-      "diskUsage": 62,
-      "memoryUsage": 78
-    },
-    {
-      "timestamp": "2024-06-17 11:15:00",
-      "serverName": "Server-1",
-      "cpuUsage": 73,
-      "diskUsage": 67,
-      "memoryUsage": 73
-    },
-    {
-      "timestamp": "2024-06-17 11:15:00",
-      "serverName": "Server-2",
-      "cpuUsage": 77,
-      "diskUsage": 71,
-      "memoryUsage": 77
-    },
-    {
-      "timestamp": "2024-06-17 11:15:00",
-      "serverName": "Server-3",
-      "cpuUsage": 75,
-      "diskUsage": 69,
-      "memoryUsage": 75
-    },
-    {
-      "timestamp": "2024-06-17 11:15:00",
-      "serverName": "Server-4",
-      "cpuUsage": 74,
-      "diskUsage": 68,
-      "memoryUsage": 74
-    },
-    {
-      "timestamp": "2024-06-17 11:15:00",
-      "serverName": "Server-5",
-      "cpuUsage": 72,
-      "diskUsage": 66,
-      "memoryUsage": 72
-    },
-    {
-      "timestamp": "2024-06-17 11:20:00",
-      "serverName": "Server-1",
-      "cpuUsage": 53,
-      "diskUsage": 71,
-      "memoryUsage": 76
-    },
-    {
-      "timestamp": "2024-06-17 11:20:00",
-      "serverName": "Server-2",
-      "cpuUsage": 57,
-      "diskUsage": 75,
-      "memoryUsage": 80
-    },
-    {
-      "timestamp": "2024-06-17 11:20:00",
-      "serverName": "Server-3",
-      "cpuUsage": 55,
-      "diskUsage": 73,
-      "memoryUsage": 78
-    },
-    {
-      "timestamp": "2024-06-17 11:20:00",
-      "serverName": "Server-4",
-      "cpuUsage": 54,
-      "diskUsage": 72,
-      "memoryUsage": 77
-    },
-    {
-      "timestamp": "2024-06-17 11:20:00",
-      "serverName": "Server-5",
-      "cpuUsage": 52,
-      "diskUsage": 70,
-      "memoryUsage": 75
-    },
-    {
-      "timestamp": "2024-06-17 11:25:00",
-      "serverName": "Server-1",
-      "cpuUsage": 58,
-      "diskUsage": 75,
-      "memoryUsage": 79
-    },
-    {
-      "timestamp": "2024-06-17 11:25:00",
-      "serverName": "Server-2",
-      "cpuUsage": 62,
-      "diskUsage": 79,
-      "memoryUsage": 83
-    },
-    {
-      "timestamp": "2024-06-17 11:25:00",
-      "serverName": "Server-3",
-      "cpuUsage": 60,
-      "diskUsage": 77,
-      "memoryUsage": 81
-    },
-    {
-      "timestamp": "2024-06-17 11:25:00",
-      "serverName": "Server-4",
-      "cpuUsage": 59,
-      "diskUsage": 76,
-      "memoryUsage": 80
-    },
-    {
-      "timestamp": "2024-06-17 11:25:00",
-      "serverName": "Server-5",
-      "cpuUsage": 57,
-      "diskUsage": 74,
-      "memoryUsage": 78
-    },
-    {
-      "timestamp": "2024-06-17 11:30:00",
-      "serverName": "Server-1",
-      "cpuUsage": 63,
-      "diskUsage": 63,
-      "memoryUsage": 73
-    },
-    {
-      "timestamp": "2024-06-17 11:30:00",
-      "serverName": "Server-2",
-      "cpuUsage": 67,
-      "diskUsage": 67,
-      "memoryUsage": 77
-    },
-    {
-      "timestamp": "2024-06-17 11:30:00",
-      "serverName": "Server-3",
-      "cpuUsage": 65,
-      "diskUsage": 65,
-      "memoryUsage": 75
-    },
-    {
-      "timestamp": "2024-06-17 11:30:00",
-      "serverName": "Server-4",
-      "cpuUsage": 64,
-      "diskUsage": 64,
-      "memoryUsage": 74
-    },
-    {
-      "timestamp": "2024-06-17 11:30:00",
-      "serverName": "Server-5",
-      "cpuUsage": 62,
-      "diskUsage": 62,
-      "memoryUsage": 72
-    },
-    {
-      "timestamp": "2024-06-17 11:35:00",
-      "serverName": "Server-1",
-      "cpuUsage": 68,
-      "diskUsage": 67,
-      "memoryUsage": 76
-    },
-    {
-      "timestamp": "2024-06-17 11:35:00",
-      "serverName": "Server-2",
-      "cpuUsage": 72,
-      "diskUsage": 71,
-      "memoryUsage": 80
-    },
-    {
-      "timestamp": "2024-06-17 11:35:00",
-      "serverName": "Server-3",
-      "cpuUsage": 70,
-      "diskUsage": 69,
-      "memoryUsage": 78
-    },
-    {
-      "timestamp": "2024-06-17 11:35:00",
-      "serverName": "Server-4",
-      "cpuUsage": 69,
-      "diskUsage": 68,
-      "memoryUsage": 77
-    },
-    {
-      "timestamp": "2024-06-17 11:35:00",
-      "serverName": "Server-5",
-      "cpuUsage": 67,
-      "diskUsage": 66,
-      "memoryUsage": 75
-    },
-    {
-      "timestamp": "2024-06-17 11:40:00",
-      "serverName": "Server-1",
-      "cpuUsage": 73,
-      "diskUsage": 71,
-      "memoryUsage": 79
-    },
-    {
-      "timestamp": "2024-06-17 11:40:00",
-      "serverName": "Server-2",
-      "cpuUsage": 77,
-      "diskUsage": 75,
-      "memoryUsage": 83
-    },
-    {
-      "timestamp": "2024-06-17 11:40:00",
-      "serverName": "Server-3",
-      "cpuUsage": 75,
-      "diskUsage": 73,
-      "memoryUsage": 81
-    },
-    {
-      "timestamp": "2024-06-17 11:40:00",
-      "serverName": "Server-4",
-      "cpuUsage": 74,
-      "diskUsage": 72,
-      "memoryUsage": 80
-    },
-    {
-      "timestamp": "2024-06-17 11:40:00",
-      "serverName": "Server-5",
-      "cpuUsage": 72,
-      "diskUsage": 70,
-      "memoryUsage": 78
-    },
-    {
-      "timestamp": "2024-06-17 11:45:00",
-      "serverName": "Server-1",
-      "cpuUsage": 53,
-      "diskUsage": 75,
-      "memoryUsage": 73
-    },
-    {
-      "timestamp": "2024-06-17 11:45:00",
-      "serverName": "Server-2",
-      "cpuUsage": 57,
-      "diskUsage": 79,
-      "memoryUsage": 77
-    },
-    {
-      "timestamp": "2024-06-17 11:45:00",
-      "serverName": "Server-3",
-      "cpuUsage": 55,
-      "diskUsage": 77,
-      "memoryUsage": 75
-    },
-    {
-      "timestamp": "2024-06-17 11:45:00",
-      "serverName": "Server-4",
-      "cpuUsage": 54,
-      "diskUsage": 76,
-      "memoryUsage": 74
-    },
-    {
-      "timestamp": "2024-06-17 11:45:00",
-      "serverName": "Server-5",
-      "cpuUsage": 52,
-      "diskUsage": 74,
-      "memoryUsage": 72
-    },
-    {
-      "timestamp": "2024-06-17 11:50:00",
-      "serverName": "Server-1",
-      "cpuUsage": 58,
-      "diskUsage": 63,
-      "memoryUsage": 76
-    },
-    {
-      "timestamp": "2024-06-17 11:50:00",
-      "serverName": "Server-2",
-      "cpuUsage": 62,
-      "diskUsage": 67,
-      "memoryUsage": 80
-    },
-    {
-      "timestamp": "2024-06-17 11:50:00",
-      "serverName": "Server-3",
-      "cpuUsage": 60,
-      "diskUsage": 65,
-      "memoryUsage": 78
-    },
-    {
-      "timestamp": "2024-06-17 11:50:00",
-      "serverName": "Server-4",
-      "cpuUsage": 59,
-      "diskUsage": 64,
-      "memoryUsage": 77
-    },
-    {
-      "timestamp": "2024-06-17 11:50:00",
-      "serverName": "Server-5",
-      "cpuUsage": 57,
-      "diskUsage": 62,
-      "memoryUsage": 75
-    },
-    {
-      "timestamp": "2024-06-17 11:55:00",
-      "serverName": "Server-1",
-      "cpuUsage": 63,
-      "diskUsage": 67,
-      "memoryUsage": 79
-    },
-    {
-      "timestamp": "2024-06-17 11:55:00",
-      "serverName": "Server-2",
-      "cpuUsage": 67,
-      "diskUsage": 71,
-      "memoryUsage": 83
-    },
-    {
-      "timestamp": "2024-06-17 11:55:00",
-      "serverName": "Server-3",
-      "cpuUsage": 65,
-      "diskUsage": 69,
-      "memoryUsage": 81
-    },
-    {
-      "timestamp": "2024-06-17 11:55:00",
-      "serverName": "Server-4",
-      "cpuUsage": 64,
-      "diskUsage": 68,
-      "memoryUsage": 80
-    },
-    {
-      "timestamp": "2024-06-17 11:55:00",
-      "serverName": "Server-5",
-      "cpuUsage": 62,
-      "diskUsage": 66,
-      "memoryUsage": 78
-    },
-    {
-      "timestamp": "2024-06-17 12:00:00",
-      "serverName": "Server-1",
-      "cpuUsage": 68,
-      "diskUsage": 71,
-      "memoryUsage": 73
-    },
-    {
-      "timestamp": "2024-06-17 12:00:00",
-      "serverName": "Server-2",
-      "cpuUsage": 72,
-      "diskUsage": 75,
-      "memoryUsage": 77
-    },
-    {
-      "timestamp": "2024-06-17 12:00:00",
-      "serverName": "Server-3",
-      "cpuUsage": 70,
-      "diskUsage": 73,
-      "memoryUsage": 75
-    },
-    {
-      "timestamp": "2024-06-17 12:00:00",
-      "serverName": "Server-4",
-      "cpuUsage": 69,
-      "diskUsage": 72,
-      "memoryUsage": 74
-    },
-    {
-      "timestamp": "2024-06-17 12:00:00",
-      "serverName": "Server-5",
-      "cpuUsage": 67,
-      "diskUsage": 70,
-      "memoryUsage": 72
-    },
-    {
-      "timestamp": "2024-06-17 12:05:00",
-      "serverName": "Server-1",
-      "cpuUsage": 73,
-      "diskUsage": 75,
-      "memoryUsage": 76
-    },
-    {
-      "timestamp": "2024-06-17 12:05:00",
-      "serverName": "Server-2",
-      "cpuUsage": 77,
-      "diskUsage": 79,
-      "memoryUsage": 80
-    },
-    {
-      "timestamp": "2024-06-17 12:05:00",
-      "serverName": "Server-3",
-      "cpuUsage": 75,
-      "diskUsage": 77,
-      "memoryUsage": 78
-    },
-    {
-      "timestamp": "2024-06-17 12:05:00",
-      "serverName": "Server-4",
-      "cpuUsage": 74,
-      "diskUsage": 76,
-      "memoryUsage": 77
-    },
-    {
-      "timestamp": "2024-06-17 12:05:00",
-      "serverName": "Server-5",
-      "cpuUsage": 72,
-      "diskUsage": 74,
-      "memoryUsage": 75
-    }
+  {
+    "_id": "676674a5a121b1945a8b74af",
+    "timestamp": "2024-06-17 10:30:00",
+    "serverName": "Server-1",
+    "network_response_time": 125,
+    "uptime": 99.98,
+    "status": "online"
+  },
+  {
+    "_id": "676674a5a121b1945a8b74b0",
+    "timestamp": "2024-06-17 10:30:00",
+    "serverName": "Server-2",
+    "network_response_time": 138,
+    "uptime": 99.95,
+    "status": "online"
+  },
+  {
+    "_id": "676674a5a121b1945a8b74b1",
+    "timestamp": "2024-06-17 10:30:00",
+    "serverName": "Server-3",
+    "network_response_time": 142,
+    "uptime": 99.92,
+    "status": "online"
+  },
+  {
+    "_id": "676674a5a121b1945a8b74b2",
+    "timestamp": "2024-06-17 10:30:00",
+    "serverName": "Server-4",
+    "network_response_time": 131,
+    "uptime": 99.97,
+    "status": "online"
+  },
+  {
+    "_id": "676674a5a121b1945a8b74b3",
+    "timestamp": "2024-06-17 10:30:00",
+    "serverName": "Server-5",
+    "network_response_time": 128,
+    "uptime": 99.96,
+    "status": "online"
+  },
+  {
+    "_id": "676674a5a121b1945a8b74b4",
+    "timestamp": "2024-06-17 10:35:00",
+    "serverName": "Server-1",
+    "network_response_time": 135,
+    "uptime": 99.98,
+    "status": "online"
+  },
+  {
+    "_id": "676674a5a121b1945a8b74b5",
+    "timestamp": "2024-06-17 10:35:00",
+    "serverName": "Server-2",
+    "network_response_time": 145,
+    "uptime": 99.95,
+    "status": "online"
+  },
+  {
+    "_id": "676674a5a121b1945a8b74b6",
+    "timestamp": "2024-06-17 10:35:00",
+    "serverName": "Server-3",
+    "network_response_time": 155,
+    "uptime": 89.45,
+    "status": "offline"
+  },
+  {
+    "_id": "676674a5a121b1945a8b74b7",
+    "timestamp": "2024-06-17 10:35:00",
+    "serverName": "Server-4",
+    "network_response_time": 128,
+    "uptime": 99.97,
+    "status": "online"
+  },
+  {
+    "_id": "676674a5a121b1945a8b74b8",
+    "timestamp": "2024-06-17 10:35:00",
+    "serverName": "Server-5",
+    "network_response_time": 132,
+    "uptime": 99.96,
+    "status": "online"
+  },
+  {
+    "_id": "676674a5a121b1945a8b74b9",
+    "timestamp": "2024-06-17 10:40:00",
+    "serverName": "Server-1",
+    "network_response_time": 142,
+    "uptime": 99.98,
+    "status": "online"
+  },
+  {
+    "_id": "676674a5a121b1945a8b74ba",
+    "timestamp": "2024-06-17 10:40:00",
+    "serverName": "Server-2",
+    "network_response_time": 156,
+    "uptime": 99.95,
+    "status": "online"
+  },
+  {
+    "_id": "676674a5a121b1945a8b74bb",
+    "timestamp": "2024-06-17 10:40:00",
+    "serverName": "Server-3",
+    "network_response_time": 168,
+    "uptime": 92.34,
+    "status": "online"
+  },
+  {
+    "_id": "676674a5a121b1945a8b74bc",
+    "timestamp": "2024-06-17 10:40:00",
+    "serverName": "Server-4",
+    "network_response_time": 134,
+    "uptime": 99.97,
+    "status": "online"
+  },
+  {
+    "_id": "676674a5a121b1945a8b74bd",
+    "timestamp": "2024-06-17 10:40:00",
+    "serverName": "Server-5",
+    "network_response_time": 138,
+    "uptime": 99.96,
+    "status": "online"
+  },
+  {
+    "_id": "676674a5a121b1945a8b74be",
+    "timestamp": "2024-06-17 10:45:00",
+    "serverName": "Server-1",
+    "network_response_time": 148,
+    "uptime": 99.98,
+    "status": "online"
+  },
+  {
+    "_id": "676674a5a121b1945a8b74bf",
+    "timestamp": "2024-06-17 10:45:00",
+    "serverName": "Server-2",
+    "network_response_time": 165,
+    "uptime": 88.76,
+    "status": "offline"
+  },
+  {
+    "_id": "676674a5a121b1945a8b74c0",
+    "timestamp": "2024-06-17 10:45:00",
+    "serverName": "Server-3",
+    "network_response_time": 175,
+    "uptime": 95.67,
+    "status": "online"
+  },
+  {
+    "_id": "676674a5a121b1945a8b74c1",
+    "timestamp": "2024-06-17 10:45:00",
+    "serverName": "Server-4",
+    "network_response_time": 142,
+    "uptime": 99.97,
+    "status": "online"
+  },
+  {
+    "_id": "676674a5a121b1945a8b74c2",
+    "timestamp": "2024-06-17 10:45:00",
+    "serverName": "Server-5",
+    "network_response_time": 145,
+    "uptime": 99.96,
+    "status": "online"
+  },
+  {
+    "_id": "676674a5a121b1945a8b74c3",
+    "timestamp": "2024-06-17 10:50:00",
+    "serverName": "Server-1",
+    "network_response_time": 155,
+    "uptime": 99.98,
+    "status": "online"
+  },
+  {
+    "_id": "676674a5a121b1945a8b74c4",
+    "timestamp": "2024-06-17 10:50:00",
+    "serverName": "Server-2",
+    "network_response_time": 178,
+    "uptime": 92.45,
+    "status": "online"
+  },
+  {
+    "_id": "676674a5a121b1945a8b74c5",
+    "timestamp": "2024-06-17 10:50:00",
+    "serverName": "Server-3",
+    "network_response_time": 182,
+    "uptime": 97.89,
+    "status": "online"
+  },
+  {
+    "_id": "676674a5a121b1945a8b74c6",
+    "timestamp": "2024-06-17 10:50:00",
+    "serverName": "Server-4",
+    "network_response_time": 148,
+    "uptime": 99.97,
+    "status": "online"
+  },
+  {
+    "_id": "676674a5a121b1945a8b74c7",
+    "timestamp": "2024-06-17 10:50:00",
+    "serverName": "Server-5",
+    "network_response_time": 152,
+    "uptime": 99.96,
+    "status": "online"
+  },
+  {
+    "_id": "676674a5a121b1945a8b74c8",
+    "timestamp": "2024-06-17 10:55:00",
+    "serverName": "Server-1",
+    "network_response_time": 162,
+    "uptime": 99.98,
+    "status": "online"
+  },
+  {
+    "_id": "676674a5a121b1945a8b74c9",
+    "timestamp": "2024-06-17 10:55:00",
+    "serverName": "Server-2",
+    "network_response_time": 185,
+    "uptime": 95.67,
+    "status": "online"
+  },
+  {
+    "_id": "676674a5a121b1945a8b74ca",
+    "timestamp": "2024-06-17 10:55:00",
+    "serverName": "Server-3",
+    "network_response_time": 188,
+    "uptime": 98.92,
+    "status": "online"
+  },
+  {
+    "_id": "676674a5a121b1945a8b74cb",
+    "timestamp": "2024-06-17 10:55:00",
+    "serverName": "Server-4",
+    "network_response_time": 155,
+    "uptime": 87.65,
+    "status": "offline"
+  },
+  {
+    "_id": "676674a5a121b1945a8b74cc",
+    "timestamp": "2024-06-17 10:55:00",
+    "serverName": "Server-5",
+    "network_response_time": 158,
+    "uptime": 99.96,
+    "status": "online"
+  },
+  {
+    "_id": "676674a5a121b1945a8b74cd",
+    "timestamp": "2024-06-17 11:00:00",
+    "serverName": "Server-1",
+    "network_response_time": 168,
+    "uptime": 99.98,
+    "status": "online"
+  },
+  {
+    "_id": "676674a5a121b1945a8b74ce",
+    "timestamp": "2024-06-17 11:00:00",
+    "serverName": "Server-2",
+    "network_response_time": 192,
+    "uptime": 97.85,
+    "status": "online"
+  },
+  {
+    "_id": "676674a5a121b1945a8b74cf",
+    "timestamp": "2024-06-17 11:00:00",
+    "serverName": "Server-3",
+    "network_response_time": 195,
+    "uptime": 99.34,
+    "status": "online"
+  },
+  {
+    "_id": "676674a5a121b1945a8b74d0",
+    "timestamp": "2024-06-17 11:00:00",
+    "serverName": "Server-4",
+    "network_response_time": 162,
+    "uptime": 92.45,
+    "status": "online"
+  },
+  {
+    "_id": "676674a5a121b1945a8b74d1",
+    "timestamp": "2024-06-17 11:00:00",
+    "serverName": "Server-5",
+    "network_response_time": 165,
+    "uptime": 99.96,
+    "status": "online"
+  },
+  {
+    "_id": "676674a5a121b1945a8b74d2",
+    "timestamp": "2024-06-17 11:05:00",
+    "serverName": "Server-1",
+    "network_response_time": 175,
+    "uptime": 99.98,
+    "status": "online"
+  },
+  {
+    "_id": "676674a5a121b1945a8b74d3",
+    "timestamp": "2024-06-17 11:05:00",
+    "serverName": "Server-2",
+    "network_response_time": 198,
+    "uptime": 98.92,
+    "status": "online"
+  },
+  {
+    "_id": "676674a5a121b1945a8b74d4",
+    "timestamp": "2024-06-17 11:05:00",
+    "serverName": "Server-3",
+    "network_response_time": 202,
+    "uptime": 99.67,
+    "status": "online"
+  },
+  {
+    "_id": "676674a5a121b1945a8b74d5",
+    "timestamp": "2024-06-17 11:05:00",
+    "serverName": "Server-4",
+    "network_response_time": 168,
+    "uptime": 95.78,
+    "status": "online"
+  },
+  {
+    "_id": "676674a5a121b1945a8b74d6",
+    "timestamp": "2024-06-17 11:05:00",
+    "serverName": "Server-5",
+    "network_response_time": 172,
+    "uptime": 99.96,
+    "status": "online"
+  },
+  {
+    "_id": "676674a5a121b1945a8b74d7",
+    "timestamp": "2024-06-17 11:10:00",
+    "serverName": "Server-1",
+    "network_response_time": 182,
+    "uptime": 99.98,
+    "status": "online"
+  },
+  {
+    "_id": "676674a5a121b1945a8b74d8",
+    "timestamp": "2024-06-17 11:10:00",
+    "serverName": "Server-2",
+    "network_response_time": 205,
+    "uptime": 99.45,
+    "status": "online"
+  },
+  {
+    "_id": "676674a5a121b1945a8b74d9",
+    "timestamp": "2024-06-17 11:10:00",
+    "serverName": "Server-3",
+    "network_response_time": 208,
+    "uptime": 99.82,
+    "status": "online"
+  },
+  {
+    "_id": "676674a5a121b1945a8b74da",
+    "timestamp": "2024-06-17 11:10:00",
+    "serverName": "Server-4",
+    "network_response_time": 175,
+    "uptime": 97.89,
+    "status": "online"
+  },
+  {
+    "_id": "676674a5a121b1945a8b74db",
+    "timestamp": "2024-06-17 11:10:00",
+    "serverName": "Server-5",
+    "network_response_time": 178,
+    "uptime": 88.45,
+    "status": "offline"
+  },
   ];
 
 saveDataToMongoDB(data);
